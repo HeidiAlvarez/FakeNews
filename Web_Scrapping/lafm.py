@@ -1,6 +1,12 @@
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+url_LaFM = os.getenv('URL_LAFM')
 
 
 def get_urls_politica_LaFM(url_base: str, headers: dict):
@@ -19,7 +25,7 @@ def get_urls_politica_LaFM(url_base: str, headers: dict):
     for a in links:
         href = a["href"]
         if href.startswith("/politica/"):
-            urls.append("https://www.lafm.com.co" + href)
+            urls.append(url_LaFM + href)
 
     # Quitar duplicados
     urls = list(dict.fromkeys(urls))

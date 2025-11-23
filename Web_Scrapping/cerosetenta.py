@@ -1,6 +1,12 @@
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+url_CeroSetenta = os.getenv('URL_CEROSETENTA')
 
 def get_urls_politica_CeroSetenta(url_base: str, headers: dict):
     """
@@ -17,7 +23,7 @@ def get_urls_politica_CeroSetenta(url_base: str, headers: dict):
     urls = []
     for h2 in soup.find_all("h2"):
         a = h2.find_parent("a")
-        if a and a["href"].startswith("https://cerosetenta.uniandes.edu.co/"):
+        if a and a["href"].startswith(url_CeroSetenta):
             urls.append(a["href"])
 
     # Quitar duplicados
