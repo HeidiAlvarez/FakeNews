@@ -1,15 +1,10 @@
 import requests
 import pandas as pd
-#from io import BytesIO
-#import os
 
 import xml.etree.ElementTree as ET
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
-#import time
-#import hashlib
 from datetime import datetime
-#import csv
 import json
 
 '''
